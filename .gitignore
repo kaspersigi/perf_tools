@@ -4,3 +4,5 @@ settings.json
 ._.DS_Store
 bochsout.txt
 bx_enh_dbg.ini
+__pycache__/
+*.pyc
