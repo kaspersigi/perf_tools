@@ -2,11 +2,11 @@ adb devices
 adb root
 
 set NDK=C:\Users\kaspe\Downloads\android-ndk-r27c
+set DRAW=C:\Users\kaspe\Downloads\FlameGraph-master
+set SYMFS=C:\Users\kaspe\Downloads\shiba\symbols
 set PERF=%NDK%\simpleperf\bin\windows\x86_64\simpleperf.exe
 set FOLD=%NDK%\simpleperf\stackcollapse.py
 set FOX=%NDK%\simpleperf\gecko_profile_generator.py
-set DRAW=C:\Users\kaspe\Downloads\FlameGraph-master
-set SYMFS=C:\Users\kaspe\Downloads\shiba\symbols
 set PROG=android.hardware.camera.provider@2.7-service-google
 
 adb shell /data/local/tmp/simpleperf record -e instructions -p `pidof %PROG%` --duration 10 -c 100000 -g -o /data/local/tmp/perf.data
