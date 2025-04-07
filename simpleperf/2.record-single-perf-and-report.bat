@@ -2,7 +2,7 @@ adb devices
 adb root
 
 set NDK=C:\Users\kaspe\Downloads\android-ndk-r27c
-set DRAW=C:\Users\kaspe\Downloads\FlameGraph-master
+set DRAW=FlameGraph-master
 set SYMFS=C:\Users\kaspe\Downloads\shiba\symbols
 set PERF=%NDK%\simpleperf\bin\windows\x86_64\simpleperf.exe
 set FOLD=%NDK%\simpleperf\stackcollapse.py
