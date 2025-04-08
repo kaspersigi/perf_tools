@@ -9,7 +9,7 @@ FOLD=$NDK/simpleperf/stackcollapse.py
 FOX=$NDK/simpleperf/gecko_profile_generator.py
 PROG=android.hardware.camera.provider@2.7-service-google
 
-adb shell /data/local/tmp/simpleperf record -e instructions -p `pidof %PROG%` --duration 10 -c 100000 -g -o /data/local/tmp/perf.data
+adb shell /data/local/tmp/simpleperf record -e instructions -p `pidof $PROG` --duration 10 -c 100000 -g -o /data/local/tmp/perf.data
 adb pull /data/local/tmp/perf.data .
 
 # 年月日_时分秒
