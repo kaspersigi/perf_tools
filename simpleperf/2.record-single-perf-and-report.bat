@@ -1,5 +1,6 @@
 adb devices
 adb root
+adb remount
 
 set NDK=C:\Users\kaspe\Downloads\android-ndk-r27c
 set DRAW=FlameGraph

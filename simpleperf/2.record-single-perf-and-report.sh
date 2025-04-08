@@ -1,8 +1,9 @@
 adb devices
 adb root
+adb remount
 
 NDK=~/android-ndk-r27c
-DRAW=~/FlameGraph
+DRAW=./FlameGraph
 SYMFS=~/shiba/symbols
 PERF=$NDK/simpleperf/bin/linux/x86_64/simpleperf
 FOLD=$NDK/simpleperf/stackcollapse.py
