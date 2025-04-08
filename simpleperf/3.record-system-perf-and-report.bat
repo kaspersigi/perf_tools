@@ -29,7 +29,7 @@ rename perf.data %timer%.perf-data
 py -3 %FOLD% -i %timer%.perf-data > %timer%.perf-folded
 
 ::py -3 %FOX% -i %timer%.perf-data --symfs %SYMFS% > %timer%.json.gz
-py -3 %FOLD% -i %timer%.perf-data > %timer%.perf-folded
+py -3 %FOLD% -i %timer%.perf-data > %timer%.json.gz
 
 perl %DRAW%\flamegraph.pl --title "%timer%.perf-folded" %timer%.perf-folded > %timer%.svg
 
