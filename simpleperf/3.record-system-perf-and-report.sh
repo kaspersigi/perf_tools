@@ -3,7 +3,8 @@ adb root
 
 NDK=~/android-ndk-r27c
 DRAW=~/FlameGraph
-SYMFS=~/shiba/symbols
+# SYMFS=~/shiba/symbols
+SYMFS=
 PERF=$NDK/simpleperf/bin/linux/x86_64/simpleperf
 FOLD=$NDK/simpleperf/stackcollapse.py
 FOX=$NDK/simpleperf/gecko_profile_generator.py

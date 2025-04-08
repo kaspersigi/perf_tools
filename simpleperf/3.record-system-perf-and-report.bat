@@ -3,7 +3,8 @@ adb root
 
 set NDK=C:\Users\kaspe\Downloads\android-ndk-r27c
 set DRAW=FlameGraph
-set SYMFS=C:\Users\kaspe\Downloads\shiba\symbols
+::set SYMFS=C:\Users\kaspe\Downloads\shiba\symbols
+set SYMFS=
 set PERF=%NDK%\simpleperf\bin\windows\x86_64\simpleperf.exe
 set FOLD=%NDK%\simpleperf\stackcollapse.py
 set FOX=%NDK%\simpleperf\gecko_profile_generator.py
