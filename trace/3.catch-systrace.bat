@@ -21,7 +21,7 @@ if "%time:~3,2%" lss "10" (set nn=0%time:~4,1%) else (set nn=%time:~3,2%)
 
 :: 年月日_时分秒
 set timer=%date:~0,4%%mm%%dd%_%hh%%nn%%time:~6,2%
-echo %timer%.atrace
-rename atrace.out %timer%.atrace
+echo %timer%.ctrace
+rename atrace.out %timer%.ctrace
 
 pause

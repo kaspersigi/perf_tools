@@ -13,5 +13,5 @@ adb shell "atrace -z -b 20960 -t 5 adb aidl am audio binder_driver binder_lock b
 
 # 年月日_时分秒
 timer=$(date +%Y%m%d_%H%M%S)
-echo $timer.atrace
-mv atrace.out $timer.atrace
+echo $timer.ctrace
+mv atrace.out $timer.ctrace
