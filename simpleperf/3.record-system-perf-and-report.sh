@@ -3,8 +3,7 @@ adb root
 
 NDK=~/android-ndk-r27c
 DRAW=~/FlameGraph
-# SYMFS=~/shiba/symbols
-SYMFS=
+SYMFS=~/shiba/symbols
 PERF=$NDK/simpleperf/bin/linux/x86_64/simpleperf
 FOLD=$NDK/simpleperf/stackcollapse.py
 FOX=$NDK/simpleperf/gecko_profile_generator.py
@@ -26,9 +25,11 @@ timer=$(date +%Y%m%d_%H%M%S)
 echo $timer.perf-data
 mv perf.data $timer.perf-data
 
-python3 $FOLD -i $timer.perf-data --symfs $SYMFS > $timer.perf-folded
+# python3 $FOLD -i $timer.perf-data --symfs $SYMFS > $timer.perf-folded
+python3 $FOLD -i $timer.perf-data > $timer.perf-folded
 
-python3 $FOX -i $timer.perf-data --symfs $SYMFS > $timer.json.gz
+# python3 $FOX -i $timer.perf-data --symfs $SYMFS > $timer.json.gz
+python3 $FOX -i $timer.perf-data > $timer.json.gz
 
 perl $DRAW/flamegraph.pl --title "$timer.perf-folded" $timer.perf-folded > $timer.svg
 

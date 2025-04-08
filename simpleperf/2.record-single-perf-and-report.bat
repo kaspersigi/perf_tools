@@ -3,8 +3,7 @@ adb root
 
 set NDK=C:\Users\kaspe\Downloads\android-ndk-r27c
 set DRAW=FlameGraph
-::set SYMFS=C:\Users\kaspe\Downloads\shiba\symbols
-set SYMFS=
+set SYMFS=C:\Users\kaspe\Downloads\shiba\symbols
 set PERF=%NDK%\simpleperf\bin\windows\x86_64\simpleperf.exe
 set FOLD=%NDK%\simpleperf\stackcollapse.py
 set FOX=%NDK%\simpleperf\gecko_profile_generator.py
@@ -26,9 +25,11 @@ set timer=%date:~0,4%%mm%%dd%_%hh%%nn%%time:~6,2%
 echo %timer%.perf-data
 rename perf.data %timer%.perf-data
 
-py -3 %FOLD% -i %timer%.perf-data --symfs %SYMFS% > %timer%.perf-folded
+::py -3 %FOLD% -i %timer%.perf-data --symfs %SYMFS% > %timer%.perf-folded
+py -3 %FOLD% -i %timer%.perf-data > %timer%.perf-folded
 
-py -3 %FOX% -i %timer%.perf-data --symfs %SYMFS% > %timer%.json.gz
+::py -3 %FOX% -i %timer%.perf-data --symfs %SYMFS% > %timer%.json.gz
+py -3 %FOX% -i %timer%.perf-data > %timer%.json.gz
 
 perl %DRAW%\flamegraph.pl --title "%timer%.perf-folded" %timer%.perf-folded > %timer%.svg
 
