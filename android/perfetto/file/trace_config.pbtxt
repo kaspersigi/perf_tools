@@ -1,5 +1,5 @@
 buffers: {
-    size_kb: 655360
+    size_kb: 65536
     fill_policy: RING_BUFFER
 }
 buffers: {

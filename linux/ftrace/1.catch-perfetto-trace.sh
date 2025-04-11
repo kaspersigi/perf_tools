@@ -3,4 +3,5 @@
 # 年月日_时分秒
 timer=$(date +%Y%m%d_%H%M%S)
 echo $timer.perfetto-trace
+chmod a+rw trace.perfetto-trace
 mv trace.perfetto-trace $timer.perfetto-trace
