@@ -1,0 +1,1 @@
+find . \( -type d -name "__pycache__" -exec rm -r {} + \) -o \( -type f -name "*.pyc" -delete \)
