@@ -1,53 +1,72 @@
-adb devices
+system=$(uname)
 
-adb push ./file/trace_config.pbtxt /data/local/tmp/
-adb push ./file/perfetto /data/local/tmp/
-adb shell chmod a+x /data/local/tmp/perfetto
+if [ "$system" = "Linux" ]; then
+    if grep -q "microsoft" /proc/sys/kernel/osrelease; then
+        echo "当前系统是 WSL"
+        ADB="adb.exe"
+    else
+        echo "当前系统是 Linux"
+        ADB="adb"
+    fi
+    source ~/.bashrc
+elif [ "$system" = "Darwin" ]; then
+    echo "当前系统是 macOS"
+    ADB="adb"
+    source ~/.zprofile
+else
+    echo "未知系统: $system"
+fi
 
-adb root
+$ADB devices
 
-adb shell setprop persist.traced.enable 1
-# adb shell setprop persist.oplus.aps.trace true
+$ADB push ./file/trace_config.pbtxt /data/local/tmp/
+$ADB push ./file/perfetto /data/local/tmp/
+$ADB shell chmod a+x /data/local/tmp/perfetto
 
-adb shell setprop persist.vendor.camera.logWarningMask 0x50080
-adb shell setprop persist.vendor.camera.logEntryExitMask 0
-adb shell setprop persist.vendor.camera.logCoreCfgMask 0x50080
-adb shell setprop persist.vendor.camera.logConfigMask 0
-adb shell setprop persist.vendor.camera.logDumpMask 0
-adb shell setprop persist.vendor.camera.logInfoMask 0x50080
-adb shell setprop persist.vendor.camera.logPerfInfoMask 0x50080
-adb shell setprop persist.vendor.camera.logVerboseMask 0
-adb shell setprop persist.vendor.camera.logDRQEnable 0
-adb shell setprop persist.vendor.camera.logMetaEnable 0
-adb shell setprop persist.vendor.camera.logRequestMapping 1
-adb shell setprop persist.vendor.camera.enableAsciiLogging 0
+$ADB root
 
-adb shell setprop persist.vendor.camera.chiLogWarningMask 0
-adb shell setprop persist.vendor.camera.chiLogCoreCfgMask 0x40FF
-adb shell setprop persist.vendor.camera.chiLogConfigMask 0
-adb shell setprop persist.vendor.camera.chiLogInfoMask 0x40FF
-adb shell setprop persist.vendor.camera.chiLogDumpMask 0
-adb shell setprop persist.vendor.camera.chiLogVerboseMask 0
-adb shell setprop persist.vendor.camera.chiLogFullMask 0
+$ADB shell setprop persist.traced.enable 1
+# $ADB shell setprop persist.oplus.aps.trace true
 
-adb shell setprop persist.vendor.camera.autoImageDump 0
-adb shell setprop persist.vendor.camera.autoImageDumpMask 0x4082
-adb shell setprop persist.vendor.camera.autoImageDumpIPEoutputPortMask 0x100
-adb shell setprop persist.vendor.camera.autoImageDumpOFEoutputPortMask 0x20
+$ADB shell setprop persist.vendor.camera.logWarningMask 0x50080
+$ADB shell setprop persist.vendor.camera.logEntryExitMask 0
+$ADB shell setprop persist.vendor.camera.logCoreCfgMask 0x50080
+$ADB shell setprop persist.vendor.camera.logConfigMask 0
+$ADB shell setprop persist.vendor.camera.logDumpMask 0
+$ADB shell setprop persist.vendor.camera.logInfoMask 0x50080
+$ADB shell setprop persist.vendor.camera.logPerfInfoMask 0x50080
+$ADB shell setprop persist.vendor.camera.logVerboseMask 0
+$ADB shell setprop persist.vendor.camera.logDRQEnable 0
+$ADB shell setprop persist.vendor.camera.logMetaEnable 0
+$ADB shell setprop persist.vendor.camera.logRequestMapping 1
+$ADB shell setprop persist.vendor.camera.enableAsciiLogging 0
 
-adb shell setprop persist.vendor.camera.enableFeature2BinaryGraphDump 0
-adb shell setprop persist.vendor.camera.enableFeature2PrunedGraphDump 0
+$ADB shell setprop persist.vendor.camera.chiLogWarningMask 0
+$ADB shell setprop persist.vendor.camera.chiLogCoreCfgMask 0x40FF
+$ADB shell setprop persist.vendor.camera.chiLogConfigMask 0
+$ADB shell setprop persist.vendor.camera.chiLogInfoMask 0x40FF
+$ADB shell setprop persist.vendor.camera.chiLogDumpMask 0
+$ADB shell setprop persist.vendor.camera.chiLogVerboseMask 0
+$ADB shell setprop persist.vendor.camera.chiLogFullMask 0
 
-adb shell setprop persist.vendor.camera.traceGroupsEnable 0x81050482
-adb shell setprop persist.vendor.camera.chiLogTraceMask 0x40FF
+$ADB shell setprop persist.vendor.camera.autoImageDump 0
+$ADB shell setprop persist.vendor.camera.autoImageDumpMask 0x4082
+$ADB shell setprop persist.vendor.camera.autoImageDumpIPEoutputPortMask 0x100
+$ADB shell setprop persist.vendor.camera.autoImageDumpOFEoutputPortMask 0x20
 
-adb shell stop perf2-hal-1-0
-adb shell setprop vendor.debug.trace.perf.level 2
-adb shell setprop vendor.debug.trace.perf 1
-adb shell setprop debug.trace.perf 1
-adb shell start perf2-hal-1-0
+$ADB shell setprop persist.vendor.camera.enableFeature2BinaryGraphDump 0
+$ADB shell setprop persist.vendor.camera.enableFeature2PrunedGraphDump 0
 
-adb shell pkill -f camera*
+$ADB shell setprop persist.vendor.camera.traceGroupsEnable 0x81050482
+$ADB shell setprop persist.vendor.camera.chiLogTraceMask 0x40FF
+
+$ADB shell stop perf2-hal-1-0
+$ADB shell setprop vendor.debug.trace.perf.level 2
+$ADB shell setprop vendor.debug.trace.perf 1
+$ADB shell setprop debug.trace.perf 1
+$ADB shell start perf2-hal-1-0
+
+$ADB shell pkill -f camera*
 
 # adb shell "echo 0 > /sys/kernel/tracing/tracing_on"
 # ls -la /sys/kernel/tracing/events/*/enable
