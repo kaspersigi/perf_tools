@@ -112,8 +112,8 @@ def main():
             logging.error(filename + ": not regular file!")
             return
         tp = init_trace_processor(filename)
-        process_map = get_process_map(tp)
-        thread_map = get_thread_map(tp)
+        # process_map = get_process_map(tp)
+        # thread_map = get_thread_map(tp)
         slice_map = get_slice_map(tp)
         down_tuple = find_slice_by_name(slice_map, "dispatchInputEvent MotionEvent ACTION_DOWN")
         up_tuple = find_slice_by_name(slice_map, "dispatchInputEvent MotionEvent ACTION_UP")
