@@ -117,16 +117,18 @@ def main():
         slice_map = get_slice_map(tp)
         down_tuple = find_slice_by_name(slice_map, "dispatchInputEvent MotionEvent ACTION_DOWN")
         up_tuple = find_slice_by_name(slice_map, "dispatchInputEvent MotionEvent ACTION_UP")
+        activity_tuple = find_slice_by_name(slice_map, "performCreate:com.android.camera.CameraLauncher")
         connect_tuple = find_slice_by_name(slice_map, "connectDevice")
         config_tuple = find_slice_by_name(slice_map, "endConfigure")
         poweron_begin_tuple = find_slice_by_name(slice_map, "RealTimeMCX: Buffer Nego Forward walk")
         first_request_tuple = find_slice_by_name(slice_map, "HAL3ProcessCaptureRequest : 0")
         prepare_streamon_tuple = find_slice_by_name(slice_map, "SensorNodePrepareStreamOn")
-        cslstreamon_tuple = find_slice_by_name(slice_map, "SensorNodePrepareStreamOn")
+        cslstreamon_tuple = find_slice_by_name(slice_map, "CSLStreamOn")
         first_frame_tuple = find_slice_by_name_and_cookie(slice_map, "frame capture", 0)
-        print("{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}".format(
+        print("{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}".format(
             "ACTION_DOWN",
             "ACTION_UP",
+            "performCreate:Activity",
             "connectDevice_E",
             "connectDevice_X",
             "endConfigure_E",
@@ -142,6 +144,7 @@ def main():
         array = [
             down_tuple[1],
             up_tuple[1],
+            activity_tuple[1],
             connect_tuple[1],
             connect_tuple[1]+connect_tuple[2],
             config_tuple[1],
@@ -154,7 +157,7 @@ def main():
             cslstreamon_tuple[1],
             cslstreamon_tuple[1]+cslstreamon_tuple[2],
             first_frame_tuple[1]+first_frame_tuple[2]]
-        print("{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}".format(
+        print("{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}".format(
             array[0],
             array[1],
             array[2],
@@ -168,9 +171,31 @@ def main():
             array[10],
             array[11],
             array[12],
-            array[13])
+            array[13],
+            array[14])
         )
-        print("\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t{}".format(
+        print("\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t{}\t{}\t{}\t{}".format(
+            "用户手速",
+            "系统响应时延",
+            "App Open时延",
+            "Connect时延",
+            "App CreateSession时延",
+            "Create&Config feature时延",
+            "上电2endconfig时延",
+            "App StartPreview时延",
+            "request2hal时延",
+            "request2prepare时延",
+            "上电等待耗时",
+            "streamon等待耗时",
+            "streamon时延",
+            "streamon2_1st_buffer",
+            "sensor上电耗时参考",
+            "configurestreams耗时",
+            "1st_frame耗时",
+            "total+手速",
+            "total"
+        ))
+        print("\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t{}\t{}\t{}\t{}".format(
             (array[1]-array[0])/1000000,
             (array[2]-array[1])/1000000,
             (array[3]-array[2])/1000000,
@@ -184,8 +209,12 @@ def main():
             (array[11]-array[10])/1000000,
             (array[12]-array[11])/1000000,
             (array[13]-array[12])/1000000,
-            (array[13]-array[0])/1000000,
-            (array[13]-array[1])/1000000)
+            (array[14]-array[13])/1000000,
+            (array[11]-array[6])/1000000,
+            (array[7]-array[5])/1000000,
+            (array[14]-array[11])/1000000,
+            (array[14]-array[0])/1000000,
+            (array[14]-array[1])/1000000)
         )
 
 if __name__ == '__main__':
