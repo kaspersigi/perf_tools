@@ -26,11 +26,17 @@ $ADB root
 # Download files
 # C:\\Python27\python.exe setup.py install
 # https://sourceforge.net/projects/pywin32/
-$ADB shell "atrace -z -b 20960 -t 5 adb aidl am audio binder_driver binder_lock bionic camera dalvik database freq gfx hal idle input memreclaim network nnapi pm power res rro rs sched sm ss sync vibrator video view webview wm workq" > atrace.out
+
+# $ADB shell "atrace -z -b 20960 -t 5 adb aidl am audio binder_driver binder_lock bionic camera dalvik database freq gfx hal idle input memreclaim network nnapi pm power res rro rs sched sm ss sync vibrator video view webview wm workq" > atrace.out
 # python2 systrace\systrace\systrace.py --from-file=atrace.out -o trace.html
 # rm -r atrace.out
 
+$ADB shell "atrace -b 20960 -t 5 adb aidl am audio binder_driver binder_lock bionic camera dalvik database freq gfx hal idle input memreclaim network nnapi pm power res rro rs sched sm ss sync vibrator video view webview wm workq" > atrace.systrace
+
 # 年月日_时分秒
 timer=$(date +%Y%m%d_%H%M%S)
-echo $timer.ctrace
-mv atrace.out $timer.ctrace
+# echo $timer.ctrace
+# mv atrace.out $timer.ctrace
+
+echo $timer.systrace
+mv atrace.systrace $timer.systrace

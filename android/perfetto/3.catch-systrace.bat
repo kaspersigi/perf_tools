@@ -7,9 +7,12 @@ adb root
 :: Download files
 :: C:\\Python27\python.exe setup.py install
 :: https://sourceforge.net/projects/pywin32/
-adb shell "atrace -z -b 20960 -t 5 adb aidl am audio binder_driver binder_lock bionic camera dalvik database freq gfx hal idle input memreclaim network nnapi pm power res rro rs sched sm ss sync vibrator video view webview wm workq" > atrace.out
+
+:: adb shell "atrace -z -b 20960 -t 5 adb aidl am audio binder_driver binder_lock bionic camera dalvik database freq gfx hal idle input memreclaim network nnapi pm power res rro rs sched sm ss sync vibrator video view webview wm workq" > atrace.out
 :: py -2 systrace\systrace\systrace.py --from-file=atrace.out -o trace.html
 :: del /Q atrace.out
+
+adb shell "atrace -b 20960 -t 5 adb aidl am audio binder_driver binder_lock bionic camera dalvik database freq gfx hal idle input memreclaim network nnapi pm power res rro rs sched sm ss sync vibrator video view webview wm workq" > atrace.systrace
 
 @echo off
 
@@ -21,7 +24,10 @@ if "%time:~3,2%" lss "10" (set nn=0%time:~4,1%) else (set nn=%time:~3,2%)
 
 :: 年月日_时分秒
 set timer=%date:~0,4%%mm%%dd%_%hh%%nn%%time:~6,2%
-echo %timer%.ctrace
-rename atrace.out %timer%.ctrace
+:: echo %timer%.ctrace
+:: rename atrace.out %timer%.ctrace
+
+echo %timer%.systrace
+rename atrace.systrace %timer%.systrace
 
 pause
