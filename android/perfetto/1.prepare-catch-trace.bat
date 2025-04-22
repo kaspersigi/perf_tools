@@ -42,9 +42,9 @@ adb shell setprop persist.vendor.camera.traceGroupsEnable 0x81050482
 adb shell setprop persist.vendor.camera.chiLogTraceMask 0x40FF
 
 adb shell stop perf2-hal-1-0
-adb shell setprop vendor.debug.trace.perf.level 2
-adb shell setprop vendor.debug.trace.perf 1
-adb shell setprop debug.trace.perf 1
+adb shell setprop persist.vendor.debug.trace.perf.level 2
+adb shell setprop persist.vendor.debug.trace.perf 1
+adb shell setprop persist.debug.trace.perf 1
 adb shell start perf2-hal-1-0
 
 adb shell pkill -f camera*
