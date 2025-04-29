@@ -24,6 +24,11 @@ $ADB push ./file/perfetto /data/local/tmp/
 $ADB shell chmod a+x /data/local/tmp/perfetto
 
 $ADB root
+$ADB remount
+
+$ADB shell mkdir -p /data/vendor/gpu
+$ADB shell chmod 777 /data/vendor/gpu
+$ADB push ./file/adreno_config.txt /data/vendor/gpu/
 
 $ADB shell setprop persist.traced.enable 1
 # $ADB shell setprop persist.oplus.aps.trace true

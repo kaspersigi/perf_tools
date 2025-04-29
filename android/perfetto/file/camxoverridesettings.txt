@@ -54,7 +54,7 @@ traceGroupsEnable=0x81050482
 # static const CamxLogGroup CamxLogGroupCRE           = (static_cast<UINT64>(1) << 35);   ///< CRE
 # static const CamxLogGroup CamxLogGroupOFE           = (static_cast<UINT64>(1) << 36);   ///< OFE
 # static const CamxLogGroup CamxLogGroupAWBR          = (static_cast<UINT64>(1) << 37);   ///< AWBR
-# 
+#
 # static const CamxLogGroup CamxLogGroupITOF          = (static_cast<UINT64>(1) << 38);   ///< ITOF
 # static const CamxLogGroup CamxLogGroupPerf          = (static_cast<UINT64>(1) << 39);   ///< Perf
 # static const CamxLogGroup CamxLogGroupStatsParse    = (static_cast<UINT64>(1) << 40);   ///< Stats Parser
