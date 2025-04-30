@@ -1,8 +1,9 @@
 adb devices
 
-adb push ./file/trace_config.pbtxt /data/local/tmp/
-adb push ./file/perfetto /data/local/tmp/
-adb shell chmod a+x /data/local/tmp/perfetto
+adb push ./file/short_trace_config.pbtxt /data/local/tmp/
+adb push ./file/long_trace_config.pbtxt /data/local/tmp/
+adb push ./file/tracebox /data/local/tmp/
+adb shell chmod a+x /data/local/tmp/tracebox
 
 adb root
 adb remount

@@ -19,9 +19,10 @@ fi
 
 $ADB devices
 
-$ADB push ./file/trace_config.pbtxt /data/local/tmp/
-$ADB push ./file/perfetto /data/local/tmp/
-$ADB shell chmod a+x /data/local/tmp/perfetto
+$ADB push ./file/short_trace_config.pbtxt /data/local/tmp/
+$ADB push ./file/long_trace_config.pbtxt /data/local/tmp/
+$ADB push ./file/tracebox /data/local/tmp/
+$ADB shell chmod a+x /data/local/tmp/tracebox
 
 $ADB root
 $ADB remount
