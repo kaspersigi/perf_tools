@@ -106,5 +106,4 @@ data_sources: {
     }
 }
 duration_ms: 5000
-# compression_type: COMPRESSION_TYPE_DEFLATE
-# 影响python解析
+compression_type: COMPRESSION_TYPE_DEFLATE
