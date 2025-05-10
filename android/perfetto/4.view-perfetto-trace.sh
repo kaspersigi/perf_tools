@@ -16,7 +16,7 @@ elif [ "$system" = "Darwin" ]; then
     echo "当前系统是 macOS"
     ADB="adb"
     platform="darwin"
-    source ~/.zprofile
+    source ~/.zshrc
 else
     echo "未知系统: $system"
 fi

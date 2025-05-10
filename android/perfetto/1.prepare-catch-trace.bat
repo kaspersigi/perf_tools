@@ -15,6 +15,8 @@ adb push ./file/adreno_config.txt /data/vendor/gpu/
 adb shell setprop persist.traced.enable 1
 ::adb shell setprop persist.oplus.aps.trace true
 
+adb shell setprop persist.log.tag V
+
 adb shell setprop persist.vendor.camera.logWarningMask 0x50080
 adb shell setprop persist.vendor.camera.logEntryExitMask 0
 adb shell setprop persist.vendor.camera.logCoreCfgMask 0x50080
@@ -70,7 +72,7 @@ adb shell pkill -f camera*
 :: CAM_MEM     22
 :: CAM_REQ     24
 
-::atrace_categories: "bionic"  shows dlopen
+::atrace_categories: "bionic" shows dlopen
 
 ::smomo log
 ::adb shell "service call display.smomoservice 3 i32 0 i32 0 i32 1 i32 1"

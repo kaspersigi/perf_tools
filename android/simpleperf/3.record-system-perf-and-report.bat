@@ -9,6 +9,7 @@ set PERF=%NDK%\simpleperf\bin\windows\x86_64\simpleperf.exe
 set FOLD=%NDK%\simpleperf\stackcollapse.py
 set FOX=%NDK%\simpleperf\gecko_profile_generator.py
 set PROG=android.hardware.camera.provider@2.7-service-google
+set PERL=perl\bin\perl.exe
 
 adb shell /data/local/tmp/simpleperf record -e instructions -a --duration 10 -c 100000 -g -o /data/local/tmp/perf.data
 adb pull /data/local/tmp/perf.data .
@@ -32,7 +33,7 @@ py -3 %FOLD% -i %timer%.perf-data > %timer%.perf-folded
 ::py -3 %FOX% -i %timer%.perf-data --symfs %SYMFS% > %timer%.json.gz
 py -3 %FOLD% -i %timer%.perf-data > %timer%.json.gz
 
-perl %DRAW%\flamegraph.pl --title "%timer%.perf-folded" %timer%.perf-folded > %timer%.svg
+%PERL% %DRAW%\flamegraph.pl --title "%timer%.perf-folded" %timer%.perf-folded > %timer%.svg
 
 del %timer%.perf-folded
 

@@ -12,7 +12,7 @@ if [ "$system" = "Linux" ]; then
 elif [ "$system" = "Darwin" ]; then
     echo "当前系统是 macOS"
     ADB="adb"
-    source ~/.zprofile
+    source ~/.zshrc
 else
     echo "未知系统: $system"
 fi
@@ -33,6 +33,8 @@ $ADB push ./file/adreno_config.txt /data/vendor/gpu/
 
 $ADB shell setprop persist.traced.enable 1
 # $ADB shell setprop persist.oplus.aps.trace true
+
+$ADB shell setprop persist.log.tag V
 
 $ADB shell setprop persist.vendor.camera.logWarningMask 0x50080
 $ADB shell setprop persist.vendor.camera.logEntryExitMask 0
@@ -89,7 +91,7 @@ $ADB shell pkill -f camera*
 # CAM_MEM     22
 # CAM_REQ     24
 
-# atrace_categories: "bionic"  shows dlopen
+# atrace_categories: "bionic" shows dlopen
 
 # smomo log
 # adb shell "service call display.smomoservice 3 i32 0 i32 0 i32 1 i32 1"
