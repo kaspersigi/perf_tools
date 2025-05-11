@@ -17,7 +17,7 @@ set timer=%date:~0,4%%mm%%dd%_%hh%%nn%%time:~6,2%
 echo %timer%.compressed-perfetto-trace
 rename trace.compressed-perfetto-trace %timer%.compressed-perfetto-trace
 
-:: py -3 ./analys/sql/analys.py -f %timer%.compressed-perfetto-trace >> log.tsv
-:: py -3 ./analys/perfetto/analys.py -f %timer%.compressed-perfetto-trace
+:: py -3 ./analys/sql/analys_common.py -f %timer%.decompressed-perfetto-trace >> log.tsv
+:: py -3 ./analys/perfetto/analys.py -f %timer%.decompressed-perfetto-trace
 
 pause

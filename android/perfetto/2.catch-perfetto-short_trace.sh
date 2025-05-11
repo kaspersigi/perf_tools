@@ -28,5 +28,5 @@ timer=$(date +%Y%m%d_%H%M%S)
 echo $timer.compressed-perfetto-trace
 mv trace.compressed-perfetto-trace $timer.compressed-perfetto-trace
 
-# python3 ./analys/sql/analys.py -f $timer.compressed-perfetto-trace >> log.tsv
-# python3 ./analys/perfetto/analys.py -f $timer.compressed-perfetto-trace
+# python3 ./analys/sql/analys_common.py -f $timer.decompressed-perfetto-trace >> log.tsv
+# python3 ./analys/perfetto/analys.py -f $timer.decompressed-perfetto-trace
