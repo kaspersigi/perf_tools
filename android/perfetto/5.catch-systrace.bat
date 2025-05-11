@@ -1,3 +1,5 @@
+@echo off
+
 adb devices
 adb root
 
@@ -13,8 +15,6 @@ adb root
 :: del /Q atrace.out
 
 adb shell "atrace -b 20960 -t 5 adb aidl am audio binder_driver binder_lock bionic camera dalvik database freq gfx hal idle input memreclaim network nnapi pm power res rro rs sched sm ss sync vibrator video view webview wm workq" > atrace.systrace
-
-@echo off
 
 ::时间不是两位补0
 if "%date:~5,2%" lss "10" (set mm=0%date:~6,1%) else (set mm=%date:~5,2%)

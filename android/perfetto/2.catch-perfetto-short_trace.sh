@@ -20,13 +20,13 @@ fi
 $ADB devices
 $ADB root
 
-$ADB shell -t /data/local/tmp/tracebox --txt -c /data/local/tmp/short_trace_config.pbtxt -o /data/local/tmp/trace.perfetto-trace
-$ADB pull /data/local/tmp/trace.perfetto-trace
+$ADB shell -t /data/local/tmp/tracebox --txt -c /data/local/tmp/short_trace_config.pbtxt -o /data/local/tmp/trace.compressed-perfetto-trace
+$ADB pull /data/local/tmp/trace.compressed-perfetto-trace
 
 # 年月日_时分秒
 timer=$(date +%Y%m%d_%H%M%S)
-echo $timer.perfetto-trace
-mv trace.perfetto-trace $timer.perfetto-trace
+echo $timer.compressed-perfetto-trace
+mv trace.compressed-perfetto-trace $timer.compressed-perfetto-trace
 
-# python3 ./analys/sql/analys.py -f $timer.perfetto-trace >> log.tsv
-# python3 ./analys/perfetto/analys.py -f $timer.perfetto-trace
+# python3 ./analys/sql/analys.py -f $timer.compressed-perfetto-trace >> log.tsv
+# python3 ./analys/perfetto/analys.py -f $timer.compressed-perfetto-trace

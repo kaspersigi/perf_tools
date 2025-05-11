@@ -1,10 +1,10 @@
+@echo off
+
 adb devices
 adb root
 
-adb shell -t /data/local/tmp/tracebox --txt -c /data/local/tmp/short_trace_config.pbtxt -o /data/local/tmp/trace.perfetto-trace
-adb pull /data/local/tmp/trace.perfetto-trace
-
-@echo off
+adb shell -t /data/local/tmp/tracebox --txt -c /data/local/tmp/short_trace_config.pbtxt -o /data/local/tmp/trace.compressed-perfetto-trace
+adb pull /data/local/tmp/trace.compressed-perfetto-trace
 
 ::时间不是两位补0
 if "%date:~5,2%" lss "10" (set mm=0%date:~6,1%) else (set mm=%date:~5,2%)
@@ -14,10 +14,10 @@ if "%time:~3,2%" lss "10" (set nn=0%time:~4,1%) else (set nn=%time:~3,2%)
 
 :: 年月日_时分秒
 set timer=%date:~0,4%%mm%%dd%_%hh%%nn%%time:~6,2%
-echo %timer%.perfetto-trace
-rename trace.perfetto-trace %timer%.perfetto-trace
+echo %timer%.compressed-perfetto-trace
+rename trace.compressed-perfetto-trace %timer%.compressed-perfetto-trace
 
-:: py -3 ./analys/sql/analys.py -f %timer%.perfetto-trace >> log.tsv
-:: py -3 ./analys/perfetto/analys.py -f %timer%.perfetto-trace
+:: py -3 ./analys/sql/analys.py -f %timer%.compressed-perfetto-trace >> log.tsv
+:: py -3 ./analys/perfetto/analys.py -f %timer%.compressed-perfetto-trace
 
 pause

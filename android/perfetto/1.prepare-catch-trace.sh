@@ -123,5 +123,5 @@ $ADB shell pkill -f camera*
 
 # osvelte meminfo `pidof vendor.qti.camera.provider@2.7-service_64`;osvelte meminfo `pidof cameraserver`;osvelte meminfo `pidof com.oplus.camera`
 
-# adb shell -t /data/local/tmp/perfetto --txt -c /data/local/tmp/trace_config.pbtxt -o /data/local/tmp/trace.perfetto-trace
-# adb pull /data/local/tmp/trace.perfetto-trace
+# adb shell -t /data/local/tmp/perfetto --txt -c /data/local/tmp/trace_config.pbtxt -o /data/local/tmp/trace.compressed-perfetto-trace
+# adb pull /data/local/tmp/trace.compressed-perfetto-trace

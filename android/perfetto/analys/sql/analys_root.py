@@ -3,7 +3,7 @@
 
 '''
 pip3 install perfetto
-py -3 analys.py -f redmi.perfetto-trace
+py -3 analys.py -f redmi.compressed-perfetto-trace
 '''
 
 import logging

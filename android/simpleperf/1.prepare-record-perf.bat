@@ -1,3 +1,5 @@
+@echo off
+
 adb devices
 
 set NDK=%USERPROFILE%\Downloads\android-ndk-r27c

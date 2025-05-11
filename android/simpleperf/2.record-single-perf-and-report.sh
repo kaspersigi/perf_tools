@@ -40,8 +40,8 @@ mv perf.data $timer.perf-data
 # python3 $FOLD -i $timer.perf-data --symfs $SYMFS > $timer.perf-folded
 python3 $FOLD -i $timer.perf-data > $timer.perf-folded
 
-# python3 $FOX -i $timer.perf-data --symfs $SYMFS > $timer.json.gz
-python3 $FOX -i $timer.perf-data > $timer.json.gz
+# python3 $FOX -i $timer.perf-data --symfs $SYMFS > $timer.perf-profile
+python3 $FOX -i $timer.perf-data > $timer.perf-profile
 
 perl $DRAW/flamegraph.pl --title "$timer.perf-folded" $timer.perf-folded > $timer.svg
 

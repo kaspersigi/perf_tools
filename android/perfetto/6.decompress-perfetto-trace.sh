@@ -14,15 +14,22 @@ else
     echo "未知系统: $system"
 fi
 
-PROC="./file/$platform/trace_processor_shell"
+CONV="./file/$platform/traceconv"
 
 if [ "$#" -eq 1 ]; then
     inputfile="$1"
+    outputfile="${inputfile%.*}.decompressed-perfetto-trace"
     echo "Input file: $inputfile"
+    echo "Output will be saved to: $outputfile"
+elif [ "$#" -eq 2 ]; then
+    inputfile="$1"
+    outputfile="$2"
 else
     echo "Usage: $0 <inputfile> [outputfile]"
     echo "Or drag a file onto this script."
     exit 1
 fi
 
-$PROC --httpd $inputfile
+# 执行解压
+echo "Decompressing '$inputfile' to '$outputfile'..."
+$CONV decompress_packets "$inputfile" "$outputfile"

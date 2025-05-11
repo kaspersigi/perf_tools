@@ -2,7 +2,12 @@
 settings.json
 .DS_Store
 ._.DS_Store
-bochsout.txt
-bx_enh_dbg.ini
 __pycache__/
 *.pyc
+.compressed-perfetto-trace
+.decompressed-perfetto-trace
+.perf-data
+.perf-folded
+.perf-profile
+.perf-txt
+.svg

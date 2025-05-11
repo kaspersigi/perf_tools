@@ -1,9 +1,9 @@
 ARCH=$(uname -m)
 
-./file/$ARCH/tracebox --txt -c ./file/trace_config.pbtxt -o trace.perfetto-trace
+./file/$ARCH/tracebox --txt -c ./file/trace_config.pbtxt -o trace.compressed-perfetto-trace
 
 # 年月日_时分秒
 timer=$(date +%Y%m%d_%H%M%S)
-echo $timer.perfetto-trace
-chmod a+rw trace.perfetto-trace
-mv trace.perfetto-trace $timer.perfetto-trace
+echo $timer.compressed-perfetto-trace
+chmod a+rw trace.compressed-perfetto-trace
+mv trace.compressed-perfetto-trace $timer.compressed-perfetto-trace
