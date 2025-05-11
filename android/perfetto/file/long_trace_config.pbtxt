@@ -107,6 +107,5 @@ data_sources: {
 }
 duration_ms: 43200000
 write_into_file: true
-file_write_period_ms: 2500
+file_write_period_ms: 1000
 max_file_size_bytes: 10000000000
-compression_type: COMPRESSION_TYPE_DEFLATE
