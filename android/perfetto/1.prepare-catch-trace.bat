@@ -65,13 +65,10 @@ adb shell pkill -f camera*
 
 ::adb shell "echo 1 > /proc/oplus_scheduler/sched_assist/debug_enabled"
 
-::adb shell "echo 0x140003A > /sys/module/camera/parameters/debug_mdl"
+adb shell "echo 0x1000028 > /sys/module/camera/parameters/debug_mdl"
 
-:: CAM_CORE    1
 :: CAM_ISP     3
-:: CAM_CRM     4
 :: CAM_SENSOR  5
-:: CAM_MEM     22
 :: CAM_REQ     24
 
 ::atrace_categories: "bionic" shows dlopen
