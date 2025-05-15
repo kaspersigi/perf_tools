@@ -65,7 +65,7 @@ $ADB shell setprop persist.vendor.camera.autoImageDumpOFEoutputPortMask 0x20
 $ADB shell setprop persist.vendor.camera.enableFeature2BinaryGraphDump 0
 $ADB shell setprop persist.vendor.camera.enableFeature2PrunedGraphDump 0
 
-$ADB shell setprop persist.vendor.camera.traceGroupsEnable 0x81050482
+$ADB shell setprop persist.vendor.camera.traceGroupsEnable 0x81050082
 $ADB shell setprop persist.vendor.camera.chiLogTraceMask 0x40FF
 
 $ADB shell stop perf2-hal-1-0
