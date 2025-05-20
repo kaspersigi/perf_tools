@@ -90,6 +90,10 @@ $ADB shell "echo 0x1000028 > /sys/module/camera/parameters/debug_mdl"
 
 # StreamingOn for pipeline|CAM_START_DEV|cam_sensor_apply_settings|all fences done|cam_ife_hw_mgr_handle_csid_event|__cam_isp_ctx_handle_buf_done_for_request_verify_addr
 
+# watch -n 1 "ls -1 /proc/`pidof vendor.qti.camera.provider-service_64`/fd | wc -l"
+
+# dmabuf_dump `pidof vendor.qti.camera.provider-service_64`
+
 # atrace_categories: "bionic" shows dlopen
 
 # smomo log
