@@ -1,10 +1,10 @@
 logWarningMask=0
 logEntryExitMask=0
-logCoreCfgMask=0x50082
+logCoreCfgMask=0x50080
 logConfigMask=0
 logDumpMask=0
-logInfoMask=0x50082
-logPerfInfoMask=0x50082
+logInfoMask=0x50080
+logPerfInfoMask=0x50080
 logVerboseMask=0
 # logDRQEnable=TRUE
 # logMetaEnable=TRUE

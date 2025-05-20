@@ -48,7 +48,7 @@ adb shell setprop persist.vendor.camera.autoImageDumpOFEoutputPortMask 0x20
 adb shell setprop persist.vendor.camera.enableFeature2BinaryGraphDump 0
 adb shell setprop persist.vendor.camera.enableFeature2PrunedGraphDump 0
 
-adb shell setprop persist.vendor.camera.traceGroupsEnable 0x81050082
+adb shell setprop persist.vendor.camera.traceGroupsEnable 0x81050482
 adb shell setprop persist.vendor.camera.chiLogTraceMask 0x40FF
 
 adb shell stop perf2-hal-1-0
