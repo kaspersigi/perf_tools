@@ -8,11 +8,14 @@ adb push ./file/tracebox /data/local/tmp/
 adb shell chmod a+x /data/local/tmp/tracebox
 
 adb root
-adb remount
 
-adb shell mkdir -p /data/vendor/gpu
-adb shell chmod 777 /data/vendor/gpu
-adb push ./file/adreno_config.txt /data/vendor/gpu/
+::adb remount
+::adb shell mkdir -p /data/vendor/gpu
+::adb shell chmod 777 /data/vendor/gpu
+::adb push ./file/adreno_config.txt /data/vendor/gpu/
+
+::adb shell mkdir -p /sys/kernel/tracing/instances/gpu
+::kgsl_adreno_cmdbatch_queued|kgsl_buslevel
 
 adb shell setprop persist.traced.enable 1
 ::adb shell setprop persist.oplus.aps.trace true
